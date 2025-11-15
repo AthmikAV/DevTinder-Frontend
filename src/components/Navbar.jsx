@@ -1,4 +1,7 @@
+import { useSelector } from "react-redux"
+
 const Navbar = () => {
+  const user = useSelector((store)=>store.user)
   return (
     <div className="navbar bg-base-300 shadow-sm px-4">
       
@@ -7,13 +10,7 @@ const Navbar = () => {
         <a className="btn btn-ghost text-xl">DevTinder</a>
       </div>
 
-      {/* DESKTOP MENU */}
-      <div className="hidden md:flex gap-4">
-        <a className="btn btn-ghost">Home</a>
-        <a className="btn btn-ghost">About</a>
-        <a className="btn btn-ghost">Contact</a>
-      </div>
-
+  
       {/* AVATAR DROPDOWN */}
       <div className="dropdown dropdown-end ml-3">
         <div
@@ -21,12 +18,17 @@ const Navbar = () => {
           role="button"
           className="btn btn-ghost btn-circle avatar"
         >
-          <div className="w-10 rounded-full">
+          {!user ? (<div className="w-10 rounded-full">
             <img
               alt="User Avatar"
               src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
             />
-          </div>
+          </div>) : (<div className="w-10 rounded-full">
+            <img
+              alt="User Avatar"
+              src={user.photoUrl}
+            />
+          </div>) }
         </div>
         <ul
           tabIndex={0}
@@ -46,35 +48,7 @@ const Navbar = () => {
           </li>
         </ul>
       </div>
-
-      {/* MOBILE MENU BUTTON */}
-      <div className="dropdown dropdown-end md:hidden ml-2">
-        <div
-          tabIndex={0}
-          role="button"
-          className="btn btn-ghost btn-circle"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </div>
-        
-        {/* MOBILE DROPDOWN MENU */}
-        <ul
-          tabIndex={0}
-          className="menu menu-sm dropdown-content mt-3 w-52 p-2 bg-base-100 rounded-box shadow"
-        >
-          <li><a>Home</a></li>
-          <li><a>About</a></li>
-          <li><a>Contact</a></li>
-        </ul>
-      </div>
+      
     </div>
   );
 };
