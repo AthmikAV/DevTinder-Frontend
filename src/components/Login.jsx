@@ -7,20 +7,20 @@ import { BASE_URL } from '../utils/constants';
 
 const Login = () => {
     const dispatch = useDispatch();
-    const [email, setemail] = useState('');
-    const [password, setpassword] = useState('');
-    const [Error, setError] = useState('');
+    const [email, setemail] = useState('athmikav@example.com');
+    const [password, setpassword] = useState('Athmik@456');
+    const [error, seterror] = useState('');
     const navigate = useNavigate();
     const handleLogin = async () => {
         try{const res = await axios.post(BASE_URL + '/login',
             {email,password},{withCredentials:true})
             dispatch(addUser(res.data.data));
-            setError('')
-            return navigate("/")
+            seterror('')
+            return navigate("/feed")
         }
         catch (err) {
-            setError(err.response?.data?.message || "Something went wrong");
-        }
+        seterror(err.response?.data?.message || "Something went wrong");
+}
     }
 
     return (
@@ -41,7 +41,7 @@ const Login = () => {
             </div>
             {Error && (
                 <div className='flex justify-center'>
-                    <p className='text-red-500 my-2'>Invaid Credential</p>
+            <p className='text-red-500 my-2'>{error}</p>
                 </div>)}
     </>
   )
