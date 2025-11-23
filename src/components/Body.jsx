@@ -15,10 +15,9 @@ const Body = () => {
   const user = useSelector((store) => store.user)
   const fetchData = async () => {
     try {
-      if (!user) {
+    if (!user || !user._id){
         const res =await axios.get(BASE_URL + '/profile/view', { withCredentials: true })
         dispatch(addUser(res.data));
-        console.log(res)
       }
     }
     catch (err) {
