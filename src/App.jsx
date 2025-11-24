@@ -6,8 +6,9 @@ import appStore from "./utils/appStore";
 import Feed from "./components/Feed";
 import Profile from "./components/Profile";
 import EditProfile from "./components/EditProfile";
-import ProtectedPage from "./components/ProtectedPage";
+
 import Requests from "./components/Requests";
+import Connection from "./components/Connection";
 
 const App = () => {
   return (
@@ -17,12 +18,16 @@ const App = () => {
           <Routes>
           <Route path="/" element={<Body />}>
               <Route path="/login" element={<Login />} />
-              <Route path="/feed" element={<ProtectedPage><Feed /></ProtectedPage>} />
-              <Route path="/profile" element={<ProtectedPage><Profile /></ProtectedPage>} />
-              <Route path="/profile/edit" element={<ProtectedPage><EditProfile /></ProtectedPage>} />
-              <Route path="/requests" element={<ProtectedPage><Requests/></ProtectedPage>} />
+              <Route path="/feed" element={<Feed />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/profile/edit" element={<EditProfile />} />
+              <Route path="/requests" element={<Requests />} />
+               <Route path="/connections" element={<Connection/>} />
               <Route path="/error" element={<Error />} />
 
+              
+              
+              
           </Route>
           </Routes>
         </BrowserRouter>
