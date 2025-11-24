@@ -102,8 +102,8 @@ const EditProfile = () => {
     }
 
     return (
-        <div className='flex justify-center sm:mt-[100px]'>
-            <div className="flex justify-center items-center h-screen p-4">
+        <div className='flex justify-center py-15'>
+            <div className="flex justify-center items-center p-4">
     <fieldset className="fieldset bg-base-200 border-base-300 rounded-box 
                         w-full max-w-sm border p-4">
                     <legend className="fieldset-legend text-xl">Edit Profile</legend>
